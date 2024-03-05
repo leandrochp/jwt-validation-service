@@ -18,6 +18,13 @@ repositories {
 	mavenCentral()
 }
 
+sourceSets {
+	create("componentTest") {
+		compileClasspath += sourceSets["main"].output + sourceSets["test"].output + configurations["testRuntimeClasspath"]
+		runtimeClasspath += output + compileClasspath
+	}
+}
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -29,6 +36,7 @@ dependencies {
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.mockk:mockk:1.13.10")
+
 }
 
 tasks.withType<KotlinCompile> {
@@ -38,6 +46,20 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
+tasks.create("componentTest", Test::class) {
+	description = "Runs the component tests"
+	group = "verification"
+
+	testClassesDirs = sourceSets["componentTest"].output.classesDirs
+	classpath = sourceSets["componentTest"].runtimeClasspath
+
+	useJUnitPlatform()
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.test {
+	finalizedBy("componentTest")
 }
