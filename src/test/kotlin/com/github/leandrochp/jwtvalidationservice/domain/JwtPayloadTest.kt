@@ -15,7 +15,7 @@ class JwtPayloadTest {
     }
 
     @Test
-    fun `given an invalid digit in name should return false`() {
+    fun `given a name with invalid digit should return false`() {
         val jwtPayload = JwtPayload("Test ${Random.nextInt(10)}", "Admin", 1)
 
         val result = jwtPayload.validate()
@@ -24,14 +24,14 @@ class JwtPayloadTest {
 
     @Test
     fun `given an invalid role should return false`() {
-        val jwtPayload = JwtPayload("Test", "Internal", 1)
+        val jwtPayload = JwtPayload("Test", "Intern", 1)
 
         val result = jwtPayload.validate()
         assertEquals(false, result)
     }
 
     @Test
-    fun `given an invalid prime number should return false`() {
+    fun `given an invalid seed with invalid prime number should return false`() {
         val jwtPayload = JwtPayload("Test", "Admin", 12)
 
         val result = jwtPayload.validate()
