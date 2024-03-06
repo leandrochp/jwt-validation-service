@@ -16,7 +16,8 @@ class JwtPayloadParser(
         val validToken = JWT.decode(token)
         val charset = charset("UTF-8")
         val payload = String(
-            Base64.getDecoder().decode(validToken.payload.toByteArray(charset)), charset
+            Base64.getDecoder().decode(validToken.payload.toByteArray(charset)),
+            charset
         )
         objectMapper.enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
         objectMapper.readValue(payload, JwtPayload::class.java)
