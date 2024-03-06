@@ -13,7 +13,7 @@ Outra alternativa é executar o docker-compose
 Verifique se você tem instalado o [`docker-compose`](https://docs.docker.com/compose/gettingstarted/) em seu computador.
 - No diretório raiz do projeto, execute o seguinte comando:
 ```bash
-docker-compose up --build -d
+docker-compose up --build
 ```
 
 ### Como usar
