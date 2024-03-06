@@ -6,14 +6,14 @@
 
 Clone o repositório, vá até o diretório raiz do projeto e execute o seguinte comando:
 ```bash
-  ./gradlew bootRun
+./gradlew bootRun
 ```
 Outra alternativa é executar o docker-compose
 
 Verifique se você tem instalado o [`docker-compose`](https://docs.docker.com/compose/gettingstarted/) em seu computador.
 - No diretório raiz do projeto, execute o seguinte comando:
 ```bash
-  docker-compose up --build -d
+docker-compose up --build -d
 ```
 
 ### Como usar
@@ -31,6 +31,10 @@ curl --location 'http://localhost:8080/validate' \
 ```
 ```bash
 curl --location 'http://localhost:8080/actuator/health'
+```
+Você ainda pode acessar a documentação do swagger em um navegador com o endpoint:
+```
+http://localhost:8080/docs
 ```
 
 ### Testes

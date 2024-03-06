@@ -26,14 +26,19 @@ repositories {
 
 sourceSets {
 	create("componentTest") {
-		compileClasspath += sourceSets["main"].output + sourceSets["test"].output + configurations["testRuntimeClasspath"]
+		compileClasspath += sourceSets["main"].output
 		runtimeClasspath += output + compileClasspath
 	}
+}
+
+val componentTestImplementation: Configuration by configurations.getting {
+	extendsFrom(configurations.implementation.get())
 }
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web:3.2.1")
 	implementation("org.springframework.boot:spring-boot-starter-actuator:3.2.2")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.16.1")
 	implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.22")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22")
@@ -43,6 +48,8 @@ dependencies {
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.2")
 	testImplementation("io.mockk:mockk:1.13.10")
+
+	componentTestImplementation("org.springframework.boot:spring-boot-starter-test:3.2.2")
 }
 
 tasks.withType<KotlinCompile> {
