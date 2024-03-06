@@ -14,6 +14,12 @@ java {
 	sourceCompatibility = JavaVersion.VERSION_17
 }
 
+configurations {
+	compileOnly {
+		extendsFrom(configurations.annotationProcessor.get())
+	}
+}
+
 repositories {
 	mavenCentral()
 }
@@ -26,17 +32,17 @@ sourceSets {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.boot:spring-boot-starter-actuator")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("org.springframework.boot:spring-boot-starter-web:3.2.1")
+	implementation("org.springframework.boot:spring-boot-starter-actuator:3.2.2")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.16.1")
+	implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.22")
+	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.22")
+	implementation("com.auth0:java-jwt:4.4.0")
 
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:3.2.2")
 
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.2")
 	testImplementation("io.mockk:mockk:1.13.10")
-
 }
 
 tasks.withType<KotlinCompile> {
