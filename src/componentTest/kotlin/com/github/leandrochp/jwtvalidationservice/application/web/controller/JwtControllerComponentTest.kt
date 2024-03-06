@@ -1,6 +1,7 @@
 package com.github.leandrochp.jwtvalidationservice.application.web.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.KotlinFeature
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.github.leandrochp.jwtvalidationservice.application.web.request.JwtPayloadRequestMock
 import com.github.leandrochp.jwtvalidationservice.application.web.response.JwtValidationResponse
@@ -20,7 +21,16 @@ class JwtControllerComponentTest {
     @Autowired
     private lateinit var mockMvc: MockMvc
 
-    private val objectMapper: ObjectMapper = ObjectMapper().registerModule(KotlinModule())
+    private val objectMapper: ObjectMapper = ObjectMapper().registerModule(
+        KotlinModule.Builder()
+            .withReflectionCacheSize(512)
+            .configure(KotlinFeature.NullToEmptyCollection, false)
+            .configure(KotlinFeature.NullToEmptyMap, false)
+            .configure(KotlinFeature.NullIsSameAsDefault, false)
+            .configure(KotlinFeature.SingletonSupport, false)
+            .configure(KotlinFeature.StrictNullChecks, false)
+            .build()
+    )
 
     @Test
     fun `given a valid token the api should return true`() {
