@@ -25,7 +25,7 @@ que você pode importar no software de sua preferência.
 curl --location 'http://localhost:8080/validate' \
 --header 'Content-Type: application/json' \
 --data '{
-    "token" :"eyJhbGciOiJzI1NiJ9.dfsdfsfryJSr2xrIjoiQWRtaW4iLCJTZrkIjoiNzg0MSIsIk5hbrUiOiJUb25pbmhvIEFyYXVqbyJ9.QY05fsdfsIjtrcJnP533kQNk8QXcaleJ1Q01jWY_ZzIZuAg"
+    "token" :"eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJTZWVkIjoiNzg0MSIsIk5hbWUiOiJMZWFuZHJvIFBlcmVpcmEifQ.aaX-OGChXQTLjgbKhn25YDm9sSdJjxiQOgOHjOjl6h4"
 }
 '
 ```
