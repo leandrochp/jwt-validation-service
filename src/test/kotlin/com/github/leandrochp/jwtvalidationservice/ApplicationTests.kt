@@ -1,13 +1,6 @@
 package com.github.leandrochp.jwtvalidationservice
 
-import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class ApplicationTests {
-
-	@Test
-	fun contextLoads() {
-	}
-
-}
+class ApplicationTests
